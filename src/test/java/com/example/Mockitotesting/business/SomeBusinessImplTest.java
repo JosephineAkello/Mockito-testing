@@ -13,4 +13,18 @@ class SomeBusinessImplTest {
         int expectedResults = 6;
         assertEquals(expectedResults, actualResults);
     }
+    @Test
+    void calculateSum_empty() {
+        SomeBusinessImpl business = new SomeBusinessImpl();
+        int actualResults = business.calculateSum(new int[]{});
+        int expectedResults = 0;
+        assertEquals(expectedResults, actualResults);
+    }
+    @Test
+    void calculateSum_onevalue() {
+        SomeBusinessImpl business = new SomeBusinessImpl();
+        int actualResults = business.calculateSum(new int[]{5});
+        int expectedResults = 5;
+        assertEquals(expectedResults, actualResults);
+    }
 }
