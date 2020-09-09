@@ -55,11 +55,15 @@ public class ListMockTest {
 
     @Test
     public void argumentCapturing(){
-   mock.add("SomeString");
+        mock.add("SomeString");
+        mock.add("SomeString2");
+
 
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-        verify(mock).add(captor.capture());
+        verify(mock,times(2)).add(captor.capture());
 
-        assertEquals("SomeString", captor.getValue());
+        List<String> allValues = captor.getAllValues();
+        assertEquals("SomeString", allValues.get(0));
+        assertEquals("SomeString2", allValues.get(1));
     }
 }
