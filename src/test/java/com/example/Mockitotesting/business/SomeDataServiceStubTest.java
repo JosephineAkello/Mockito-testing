@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SomeDataServiceStub implements SomeDataService {
+class SomeDataServiceStubTest implements SomeDataService {
 
     @Override
     public int[] retrieveAllData() {
@@ -32,7 +32,7 @@ class SomeDataServiceStub implements SomeDataService {
         @Test
         void calculateSumUsingDataService_basic() {
             SomeBusinessImpl business = new SomeBusinessImpl();
-            business.setSomeDataService(new SomeDataServiceStub());
+            business.setSomeDataService(new SomeDataServiceStubTest());
             int actualResults = business.calculateSumUsingDataService();
             int expectedResults = 6;
             assertEquals(expectedResults, actualResults);
