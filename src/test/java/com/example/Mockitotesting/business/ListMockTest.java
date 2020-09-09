@@ -7,11 +7,13 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ListMockTest {
 
-    List mock = mock(List.class);
+    List<String> mock = mock(List.class);
 
     @Test
     public void size_basic(){
@@ -31,5 +33,14 @@ public class ListMockTest {
         when(mock.get(anyInt())).thenReturn("Mj.....");
         assertEquals("Mj.....", mock.get(0));
         assertEquals("Mj.....", mock.get(1));
+    }
+
+    @Test
+    public void verifiation_basics(){
+    String value = mock.get(0);
+
+    verify(mock.get(0));
+    verify(mock.get(anyInt()));
+    verify(mock,times(1)).get(anyInt());
     }
 }
