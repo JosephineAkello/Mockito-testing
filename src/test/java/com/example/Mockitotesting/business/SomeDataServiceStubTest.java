@@ -50,7 +50,7 @@ class SomeDataServiceStub implements SomeDataService {
         @Test
         void calculateSumUsingDataService_onevalue() {
             SomeBusinessImpl business = new SomeBusinessImpl();
-            business.setSomeDataService(new SomeDataServiceOneElementStub());
+            business.setSomeDataService(new SomeDataServiceEmptyStub());
             int actualResults = business.calculateSumUsingDataService();
             int expectedResults = 5;
             assertEquals(expectedResults, actualResults);
