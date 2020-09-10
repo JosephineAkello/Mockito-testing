@@ -13,6 +13,7 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -80,6 +81,24 @@ public class ListMockTest {
             when(arrayListMock.size()).thenReturn(5);
             arrayListMock.size();
         }
+
+    @Test
+    public void spying(){
+        ArrayList arrayListSpy = spy(ArrayList.class);
+        arrayListSpy.add("Test0");
+        arrayListSpy.get(0);
+        arrayListSpy.size();
+        arrayListSpy.add("Test");
+        arrayListSpy.add("Test1");
+        arrayListSpy.size();
+        when(arrayListSpy.size()).thenReturn(5);
+        arrayListSpy.size();
+        arrayListSpy.add("Test4");
+
+        verify(arrayListSpy).add("Test4");
     }
+}
+
+
 
 
