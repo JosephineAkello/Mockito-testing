@@ -1,5 +1,6 @@
 package com.example.Mockitotesting.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -66,4 +67,19 @@ public class ListMockTest {
         assertEquals("SomeString", allValues.get(0));
         assertEquals("SomeString2", allValues.get(1));
     }
-}
+
+
+    @Test
+    public void spyingMock(){
+        ArrayList arrayListMock = mock(ArrayList.class);
+            arrayListMock.get(0);
+            arrayListMock.size();
+            arrayListMock.add("Test");
+            arrayListMock.add("Test1");
+            arrayListMock.size();
+            when(arrayListMock.size()).thenReturn(5);
+            arrayListMock.size();
+        }
+    }
+
+
