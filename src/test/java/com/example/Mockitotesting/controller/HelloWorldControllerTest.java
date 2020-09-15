@@ -25,10 +25,10 @@ class HelloWorldControllerTest {
     @Test
     public void hellWorld_basic() throws Exception{
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get("hello-world")
+                .get("/hello-world")
                 .accept(MediaType.APPLICATION_JSON);
         MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
 
-        assertEquals("Hello World", mvcResult.getResponse().toString());
+        assertEquals("Hello World...yeeey I made it", mvcResult.getResponse().getContentAsString());
     }
 }
