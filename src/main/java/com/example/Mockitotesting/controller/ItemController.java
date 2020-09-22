@@ -19,7 +19,7 @@ public class ItemController {
     @GetMapping("/dummy-item")
     public Item Dummy_items(){
 
-        return new Item(1,"Baaay", 10, 100);
+        return new Item(2,"Item2", 10, 10);
     }
 
     @GetMapping("/item-fom-business-service")

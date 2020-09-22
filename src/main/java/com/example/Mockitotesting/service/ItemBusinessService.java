@@ -14,7 +14,7 @@ public class ItemBusinessService {
     private ItemRepository repository;
 
     public Item retrieveHadCodedItem() {
-        return new Item(1,"Baaay", 10, 100);
+        return new Item(2,"Item2", 10, 10);
     }
 
     public List<Item> retrieveAllItems(){

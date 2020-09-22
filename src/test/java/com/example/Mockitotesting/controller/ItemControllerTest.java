@@ -1,5 +1,7 @@
 package com.example.Mockitotesting.controller;
 
+import java.util.Arrays;
+
 import com.example.Mockitotesting.model.Item;
 import com.example.Mockitotesting.service.ItemBusinessService;
 import org.junit.jupiter.api.Test;
@@ -48,14 +50,30 @@ class ItemControllerTest {
     public void item_FromBusinessSrvice() throws Exception {
 
             when(businessService.retrieveHadCodedItem()).thenReturn(
-                    new Item(2, "Item 2", 10,10));
+                    new Item(2, "Item2", 10,10));
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/item-fom-business-service")
                 .accept(MediaType.APPLICATION_JSON);
         MvcResult mvcResult = mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andExpect(content().json(
-                        "{id:1,name:Item 2,price:10,quantity:10}"))
+                        "{id:2,name:Item2,price:10,quantity:10}"))
+                .andReturn();
+
+    }
+    @Test
+    public void retrieveAllItems_basic() throws Exception {
+
+        when(businessService.retrieveAllItems()).thenReturn(
+                Arrays.asList(new Item(2, "Item2", 10,10),
+               new Item(3, "Item3", 20,30)));
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/all-items-from-the-database")
+                .accept(MediaType.APPLICATION_JSON);
+        MvcResult mvcResult = mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().json(
+                        "[{id:2,name:Item2,price:10,quantity:10},{id:3,name:Item3,price:20,quantity:30}]"))
                 .andReturn();
 
     }
