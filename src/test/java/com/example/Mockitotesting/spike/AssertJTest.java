@@ -18,7 +18,7 @@ public class AssertJTest {
         assertThat(numbers).hasSize(3)
                 .contains(12,15)
                 .allMatch(x -> x > 10)
-                .allMatch(x -> x > 100)
+                .allMatch(x -> x < 100)
                 .noneMatch(x -> x <0 );
 
         assertThat("").isEmpty();
