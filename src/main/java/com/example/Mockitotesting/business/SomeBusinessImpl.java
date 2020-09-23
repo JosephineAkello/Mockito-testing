@@ -1,5 +1,7 @@
 package com.example.Mockitotesting.business;
 
+import java.util.Arrays;
+
 import com.example.Mockitotesting.data.SomeDataService;
 
 public class SomeBusinessImpl {
@@ -14,11 +16,7 @@ public class SomeBusinessImpl {
     }
 
     public int calculateSum(int[] data){
-        int sum = 0;
-        for(int value:data){
-            sum += value;
-        }
-        return sum;
+        return Arrays.stream(data).reduce(Integer::sum).orElse(0);
     }
 
     public int calculateSumUsingDataService(){
@@ -28,5 +26,8 @@ public class SomeBusinessImpl {
             sum += value;
         }
         return sum;
+
+//        return Arrays.stream(someDataService.retrieveAllData())
+//                .sum()
     }
 }
